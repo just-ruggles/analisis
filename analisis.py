@@ -50,12 +50,3 @@ with st.expander('🔍 Analizar Polaridad y Subjetividad en un texto'):
         else:
             st.warning("😐 Emmmm... Escuchamos y no juzgamos, pero me faltó como más sazón, algo neutral está, bro.")
             st.image("https://64.media.tumblr.com/5710a90d7b5e95d13132163b10db7644/74e02ff4a6def3c0-cc/s540x810/56381fc63c713efa309150a7cb69c8e47166da6b.gifv", width=150)  # neutral cute
-
-# corrección de inglés
-with st.expander('✏️ Corrección ortográfica en inglés'):
-    text2 = st.text_area('Escribe tu texto en inglés:', key='4')
-    if text2:
-        blob2 = TextBlob(text2)
-        corrected = blob2.correct()
-        st.markdown("✅ Texto corregido:")
-        st.write(corrected)
