@@ -3,44 +3,59 @@ from textblob import TextBlob
 from googletrans import Translator
 
 translator = Translator()
-st.title('Spider-blob')
 
-st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar:")
+# Título Principal
+st.markdown("<h1 style='color: red;'>Análisis de Sentimiento con TextBlob</h1>", unsafe_allow_html=True)
+
+# Subtítulo
+st.markdown("<h3 style='color: blue;'>Escribe una frase para analizar su polaridad y subjetividad</h3>", unsafe_allow_html=True)
+
+# Barra lateral con info
 with st.sidebar:
-               st.subheader("Polaridad y Subjetividad")
-               ("""
-                Polaridad: Indica si el sentimiento expresado en el texto es positivo, negativo o neutral. 
-                Su valor oscila entre -1 (muy negativo) y 1 (muy positivo), con 0 representando un sentimiento neutral.
-                
-               Subjetividad: Mide cuánto del contenido es subjetivo (opiniones, emociones, creencias) frente a objetivo
-               (hechos). Va de 0 a 1, donde 0 es completamente objetivo y 1 es completamente subjetivo.
+    st.markdown("<h3 style='color: blue;'>¿Qué significa esto?</h3>", unsafe_allow_html=True)
+    st.markdown("""
+    **Polaridad:**  
+    Indica si el sentimiento es positivo (1), negativo (-1) o neutral (0).
 
-                 """
-               ) 
+    **Subjetividad:**  
+    Mide si el texto es más emocional (1) o más objetivo (0).
+    """)
 
-
-with st.expander('Analizar Polaridad y Subjetividad en un texto'):
-    text1 = st.text_area('Escribe por favor: ')
+# Expansor análisis de sentimientos
+with st.expander('🔍 Analizar Polaridad y Subjetividad en un texto'):
+    text1 = st.text_area('✍️ Escribe aquí tu texto en español:')
+    
     if text1:
-
+        # Traducir texto
         translation = translator.translate(text1, src="es", dest="en")
         trans_text = translation.text
         blob = TextBlob(trans_text)
-        #blob = TextBlob(text1)
-       
-        
-        st.write('Polarity: ', round(blob.sentiment.polarity,2))
-        st.write('Subjectivity: ', round(blob.sentiment.subjectivity,2))
-        x=round(blob.sentiment.polarity,2)
-        if x >= 0.5:
-            st.write( 'Es un sentimiento Positivo 😊')
-        elif x <= -0.5:
-            st.write( 'Es un sentimiento Negativo 😔')
-        else:
-            st.write( 'Es un sentimiento Neutral 😐')
 
-with st.expander('Corrección en inglés'):
-       text2 = st.text_area('Escribe por favor: ',key='4')
-       if text2:
-          blob2=TextBlob(text2)
-          st.write((blob2.correct())) 
+        polarity = round(blob.sentiment.polarity, 2)
+        subjectivity = round(blob.sentiment.subjectivity, 2)
+
+        st.write(f'🔸 **Polaridad:** {polarity}')
+        st.write(f'🔸 **Subjetividad:** {subjectivity}')
+
+        # Mostrar emoción con emojis animados (GIFs)
+        if polarity >= 0.5:
+            st.success("😊 ¡Wow! Tu mensaje transmite una energía muy positiva. ¡Sigue así!")
+            st.image("https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif", width=150)  # feliz
+            st.balloons()
+
+        elif polarity <= -0.5:
+            st.error("😔 Parece que hay sentimientos negativos. ¡Ánimo! Siempre hay algo bueno por venir.")
+            st.image("https://media.giphy.com/media/l2JHRhAtnJSDNJ2py/giphy.gif", width=150)  # triste
+
+        else:
+            st.warning("😐 Tu mensaje parece bastante neutral. ¿Quieres contarme más o darle un giro positivo?")
+            st.image("https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif", width=150)  # neutral cute
+
+# Expansor corrección de inglés
+with st.expander('✏️ Corrección ortográfica en inglés'):
+    text2 = st.text_area('Escribe tu texto en inglés:', key='4')
+    if text2:
+        blob2 = TextBlob(text2)
+        corrected = blob2.correct()
+        st.markdown("✅ Texto corregido:")
+        st.write(corrected)
