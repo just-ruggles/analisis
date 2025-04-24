@@ -3,9 +3,9 @@ from textblob import TextBlob
 from googletrans import Translator
 
 translator = Translator()
-st.title('Uso de textblob')
+st.title('Spider-blob')
 
-st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar")
+st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar:")
 with st.sidebar:
                st.subheader("Polaridad y Subjetividad")
                ("""
