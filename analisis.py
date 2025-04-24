@@ -5,7 +5,7 @@ from googletrans import Translator
 translator = Translator()
 
 # Título Principal
-st.markdown("<h1 style='color: red;'>Análisis de Sentimiento con TextBlob</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: red;'>Análisis de Sentimiento con tu amigo y vecino Spider-man</h1>", unsafe_allow_html=True)
 
 # Subtítulo
 st.markdown("<h3 style='color: blue;'>Escribe una frase para analizar su polaridad y subjetividad</h3>", unsafe_allow_html=True)
@@ -39,19 +39,19 @@ with st.expander('🔍 Analizar Polaridad y Subjetividad en un texto'):
 
         # Mostrar emoción con emojis animados (GIFs)
         if polarity >= 0.5:
-            st.success("😊 ¡Wow! Tu mensaje transmite una energía muy positiva. ¡Sigue así!")
+            st.success("😊 ¡Espectacular como Spider-man! Manteniendo la vibra positiva ¡Sigue así!")
             st.image("https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif", width=150)  # feliz
             st.balloons()
 
         elif polarity <= -0.5:
-            st.error("😔 Parece que hay sentimientos negativos. ¡Ánimo! Siempre hay algo bueno por venir.")
+            st.error("😔 Tienes como... negatividad saliéndote de los poros. ¡Ánimo! No queremos un segundo Duende Verde :/")
             st.image("https://media.giphy.com/media/l2JHRhAtnJSDNJ2py/giphy.gif", width=150)  # triste
 
         else:
-            st.warning("😐 Tu mensaje parece bastante neutral. ¿Quieres contarme más o darle un giro positivo?")
+            st.warning("😐 Emmmm... Escuchamos y no juzgamos, pero me faltó como más sazón, algo neutral está, bro.")
             st.image("https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif", width=150)  # neutral cute
 
-# Expansor corrección de inglés
+# corrección de inglés
 with st.expander('✏️ Corrección ortográfica en inglés'):
     text2 = st.text_area('Escribe tu texto en inglés:', key='4')
     if text2:
