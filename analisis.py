@@ -40,16 +40,16 @@ with st.expander('🔍 Analizar Polaridad y Subjetividad en un texto'):
         # Mostrar emoción con emojis animados (GIFs)
         if polarity >= 0.5:
             st.success("😊 ¡Espectacular como Spider-man! Manteniendo la vibra positiva ¡Sigue así!")
-            st.image("https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif", width=150)  # feliz
+            st.image("https://i.pinimg.com/originals/31/94/e6/3194e670373f841b65b266d38bcd902f.gif", width=150)  # feliz
             st.balloons()
 
         elif polarity <= -0.5:
             st.error("😔 Tienes como... negatividad saliéndote de los poros. ¡Ánimo! No queremos un segundo Duende Verde :/")
-            st.image("https://media.giphy.com/media/l2JHRhAtnJSDNJ2py/giphy.gif", width=150)  # triste
+            st.image("https://i.pinimg.com/originals/54/3b/85/543b85eb58783aa60e05bac18961eb53.gif", width=150)  # triste
 
         else:
             st.warning("😐 Emmmm... Escuchamos y no juzgamos, pero me faltó como más sazón, algo neutral está, bro.")
-            st.image("https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif", width=150)  # neutral cute
+            st.image("https://64.media.tumblr.com/5710a90d7b5e95d13132163b10db7644/74e02ff4a6def3c0-cc/s540x810/56381fc63c713efa309150a7cb69c8e47166da6b.gifv", width=150)  # neutral cute
 
 # corrección de inglés
 with st.expander('✏️ Corrección ortográfica en inglés'):
